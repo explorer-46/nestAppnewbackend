@@ -13,8 +13,8 @@ public interface EmployeDao extends CrudRepository<EmployeModel,Integer> {
     List<EmployeModel> viewByEmpid(Integer emp_id);
 
 @Modifying
-    @Query(value = "UPDATE `employee_tb` SET `e_add`=:e_add,`e_desg`=:e_desg,`e_dob`=:e_dob,`e_pass`=:e_pass,`e_name`=:e_name,`e_phn`=:e_phn,`ejoind`=:ejoind,`email`=:email,`emp_id`=:emp_id WHERE id=:id",nativeQuery = true)
-    void upDateById(String e_add,String e_desg,String e_dob,String e_pass,String e_name, String e_phn,String ejoind,String email,Integer emp_id,Integer id);
+    @Query(value = "UPDATE `employee_tb` SET `e_add`=:e_add,`e_desg`=:e_desg,`e_dob`=:e_dob,`e_pass`=:e_pass,`e_name`=:e_name,`e_phn`=:e_phn,`ejoind`=:ejoind,`email`=:email,`emp_id`=:emp_id WHERE `emp_id`=:emp_id",nativeQuery = true)
+    void upDateById(String e_add,String e_desg,String e_dob,String e_pass,String e_name, String e_phn,String ejoind,String email,Integer emp_id);
 @Modifying
     @Query(value = "DELETE FROM `employee_tb` WHERE `emp_id`=:emp_id",nativeQuery = true)
     void deleteBy(Integer emp_id);

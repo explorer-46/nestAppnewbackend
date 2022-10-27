@@ -50,7 +50,8 @@ public class SecurityController {
     @CrossOrigin(value = "*")
     @PostMapping(path = "/updatesecurity",consumes = "application/json",produces = "application/json")
     public String updateSecurity(@RequestBody SecurityModel s){
-        dao.updateBy(s.getsCode());
+        //String pass,String r_date,String s_address,String s_name,String s_phn,String user_name, Integer s_code
+        dao.updateBy(s.getPass(),s.getrDate(),s.getsAddress(),s.getsName(),s.getsPhn(),s.getUserName(),s.getsCode());
         return "{status:'success'}";
     }
     @CrossOrigin(origins = "*")

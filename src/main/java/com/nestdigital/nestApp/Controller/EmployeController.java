@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @RestController
@@ -17,6 +19,10 @@ public class EmployeController {
     @CrossOrigin(origins = "*")
     @PostMapping(path = "/addemp",consumes = "application/json",produces = "application/json")
     public String addEmp(@RequestBody EmployeModel em){
+        DateTimeFormatter dt=DateTimeFormatter.ofPattern("dd:MM:yyyy HH:mm:ss");
+        LocalDateTime now =LocalDateTime.now();
+        String currentdate=String.valueOf(dt.format(now));
+        em.setEjoinD(currentdate);
         dao.save(em);
         return "{status:'success'}";
     }
@@ -36,7 +42,8 @@ public class EmployeController {
     @CrossOrigin(origins = "*")
     @PostMapping(path= "/updateemp",consumes = "application/json",produces = "application/json")
     public  String updateEmp(@RequestBody EmployeModel e){
-        dao.upDateById(e.geteAdd(),e.geteDesg(),e.geteDob(),e.getePass(),e.getE_Name(),e.getEjoinD(),e.getE_Phn(),e.getEmail(),e.getEmpId(),e.getId());
+
+        dao.upDateById(e.geteAdd(),e.geteDesg(),e.geteDob(),e.getePass(),e.getE_Name(),e.getE_Phn(),e.getEjoinD(),e.getEmail(),e.getEmpId());
         return "{status:'success'}";
     }
     @Transactional
