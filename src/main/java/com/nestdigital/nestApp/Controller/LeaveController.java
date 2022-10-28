@@ -33,7 +33,7 @@ public class LeaveController {
     @CrossOrigin(origins = "*")
     @PostMapping(path = "/updatestatus",consumes = "application/json",produces = "application/json")
     public String updateStatus(@RequestBody LeaveModel lm){
-        dao.updateById(lm.getStatus(),lm.getEmp_id());
+        dao.updateById(lm.getStatus(),lm.getId());
         return "{status:'success'}";
     }
     @CrossOrigin(origins = "*")
