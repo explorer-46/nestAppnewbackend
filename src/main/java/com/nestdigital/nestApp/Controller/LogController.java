@@ -22,6 +22,7 @@ public class LogController {
         LocalDateTime now=LocalDateTime.now();
         String currentdate=String.valueOf(dt.format(now));
         l.setInDate(currentdate);
+        l.setCheckOut(0);
         dao.save(l);
         return "{status:'success'}";
     }
@@ -33,7 +34,7 @@ public class LogController {
         LocalDateTime now=LocalDateTime.now();
         String currentdate=String.valueOf(dt.format(now));
         l.setOutDate(currentdate);
-        dao.logOutStatus(l.getCheckOut(),l.getOutDate(),l.getEmpId());
+        dao.logOutStatus(l.getCheckOut(),l.getOutDate(),l.getId());
         return "{status:success}";
     }
     @CrossOrigin(origins = "*")
@@ -45,6 +46,12 @@ public class LogController {
     @PostMapping(path = "/viewlogbyid",consumes = "application/json",produces = "application/json")
     public List<Map<String,String>> viewLogByEmp(@RequestBody LogModel l){
         return (List<Map<String, String>>) dao.viewlogByEmpid(l.getEmpId());
+    }
+
+    @CrossOrigin(origins = "*")
+    @GetMapping("/viewcheckin")
+    public List<Map<String,String>> viewAllcheckin(){
+        return (List<Map<String, String>>) dao.viewlogByStatus();
     }
 
 

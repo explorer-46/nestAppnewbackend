@@ -13,11 +13,11 @@ public class LogModel {
     public int id;
     public int empId;
     public String checkIn;
-    public String checkOut;
+    public int checkOut;
     public String inDate;
     public String outDate;
 
-    public LogModel(int id, int empId, String checkIn, String checkOut, String inDate, String outDate) {
+    public LogModel(int id, int empId, String checkIn, int checkOut, String inDate, String outDate) {
         this.id = id;
         this.empId = empId;
         this.checkIn = checkIn;
@@ -53,11 +53,11 @@ public class LogModel {
         this.checkIn = checkIn;
     }
 
-    public String getCheckOut() {
+    public int getCheckOut() {
         return checkOut;
     }
 
-    public void setCheckOut(String checkOut) {
+    public void setCheckOut(int checkOut) {
         this.checkOut = checkOut;
     }
 
